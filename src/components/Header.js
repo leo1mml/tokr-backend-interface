@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.css'
 
 class Header extends React.Component {
   showSettings (event) {
@@ -7,7 +8,7 @@ class Header extends React.Component {
 
   render () {
     return (
-        <header>
+        <header className="App App-header">
             <img src={require('../assets/mainPage/logo_tokr.png')} height="60" alt="logo-site"/>
         </header>
     );

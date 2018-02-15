@@ -1,4 +1,7 @@
 .menuText{
     color: aliceblue;
-    text-decoration: underline;
+}
+
+.is-active{
+    font-weight: bold;
 }
