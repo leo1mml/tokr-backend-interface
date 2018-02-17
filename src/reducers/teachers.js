@@ -7,7 +7,6 @@ export default (state = teachersReducerDefaultState, action) => {
                 ...state,
                 action.teacher
             ]
-            break;
     
         default:
             return state;

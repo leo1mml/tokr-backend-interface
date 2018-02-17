@@ -9,7 +9,7 @@ class App extends Component {
   render(){
 
    return (
-   <Provider>
+   <Provider store={store}>
       <AppRouter/>
     </Provider> 
     )

@@ -7,7 +7,9 @@ export default (state = studentsReducerDefaultState, action) => {
                 ...state,
                 action.student
             ]
-            break;
+        case "SET_STUDENTS": {
+            return action.students
+        }
     
         default:
             return state;

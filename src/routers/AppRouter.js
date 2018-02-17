@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AddStudentpage from '../components/AddStudentPage'
 import StudentsList from '../components/StudentsList'
 import { push as Menu } from 'react-burger-menu'
@@ -18,7 +18,6 @@ export default () => (
           <Switch>
             <Route path="/" component={StudentsList} exact={true}/>
             <Route path="/addStudent" component={AddStudentpage}/>
-            {/* <Route component={NotFoundPage} /> */}
           </Switch>
         </div>
     </div>
