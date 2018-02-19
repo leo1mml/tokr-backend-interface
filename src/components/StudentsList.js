@@ -13,7 +13,9 @@ export class StudentsList extends React.Component{
         return (
             <div>
                 <h1>Lista de alunos</h1>
-                {console.log('ESTAADOOOOO',this.props)}
+                <button>Adicionar Aluno</button>
+                <p>Buscar(nome/cpf)</p> 
+                <input type="text" value=""/>
                 {
                     this.props.students.length === 0 ? (
                         <p>Sem alunos</p>

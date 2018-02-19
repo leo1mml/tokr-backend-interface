@@ -4,7 +4,7 @@ import moment from 'moment';
 
 const StudentListItem = ({_id, name, email, cellPhone, birthDate, cpf, address}) => (
     <div>
-        <h3>{name}</h3>
+        <p>{name} cpf: {cpf}</p>
     </div>
 )
 
