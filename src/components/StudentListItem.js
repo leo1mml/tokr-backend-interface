@@ -9,10 +9,12 @@ const StudentListItem = ({_id, name, email, cellPhone, birthDate, cpf, address, 
         <td>{cpf}</td>
         <td>{email}</td>
         <td>{address}</td>
-        <td>{instruments.map((instrument) => {
-                return `${instrument}, `
+        <td>{instruments.map((instrument, index) => {
+                return index === (instruments.length - 1) ? `${instrument}.` :`${instrument}, `
             })}</td>
-        <td>{musicStyles}</td>
+        <td>{musicStyles.map((style, index) => {
+                return index === (musicStyles.length - 1) ? `${style}.` :`${style}, `
+            })}</td>
     </tr>
 )
 

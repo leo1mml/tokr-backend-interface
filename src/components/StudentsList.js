@@ -5,6 +5,7 @@ import StudentListItem from './StudentListItem'
 import '../styles/tables/commonTable.css'
 import '../styles/titles/list-titles.css'
 import '../styles/top-widget-container/top-widget.css'
+import '../styles/tables/table-container.css'
 
 export class StudentsList extends React.Component{
 
@@ -23,25 +24,28 @@ export class StudentsList extends React.Component{
                     </p>
                     <button className="add-button">Adicionar Aluno</button>
                 </div>
-                <table id="customers">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>CPF</th>
-                            <th>E-mail</th>
-                            <th>Endereço</th>
-                            <th>Instrumentos</th>
-                            <th>Estilos Musicais</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        this.props.students.map((student) => {
-                            return <StudentListItem key={student._id} {...student} />;
-                        })
-                    }
-                    </tbody>
-                </table>
+                <div className="table-container">
+                    <table id="customers">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>E-mail</th>
+                                <th>Endereço</th>
+                                <th>Instrumentos</th>
+                                <th>Estilos Musicais</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            this.props.students.map((student) => {
+                                return <StudentListItem key={student._id} {...student} />;
+                            })
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                
             </div>
         )
     }
