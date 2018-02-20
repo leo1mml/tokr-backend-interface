@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 import {startFetchStudents} from '../actions/students'
 import StudentListItem from './StudentListItem'
 import StudentsListFilters from './StudentsListFilters'
@@ -21,7 +22,7 @@ export class StudentsList extends React.Component{
                 <h1 className="list-title">Alunos Tokr</h1>
                 <div className="list-header">
                     <StudentsListFilters/>
-                    <button className="add-button">Adicionar Aluno</button>
+                    <Link to="/addStudent"><button className="add-button">Adicionar Aluno</button></Link>
                 </div>
                 <div className="table-container">
                     <table id="customers">

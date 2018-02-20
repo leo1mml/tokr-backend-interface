@@ -22,7 +22,6 @@ export const startFetchStudents = () => {
             }
          })
          .then((response) => {
-             console.log(response);
             const students = response.data.students
             dispatch(setStudents(students))
          }) 
@@ -31,5 +30,27 @@ export const startFetchStudents = () => {
             console.log(err);
          });
 
+    }
+}
+
+export const startAddStudent = (student = {}) => {
+    return(dispatch) => {
+        axios({
+            url: 'https://tokr-server-api.herokuapp.com/students',
+            method: 'post',
+            headers: {
+                'app-pass': '90a8hsdnfilehuqahnfhiuh4rierrhqfhqhqhqeph9dklnnvknjjafaiojia98hf3iujklaaoiophhpafuuq',
+                'Content-Type': 'application/json'
+            },
+            data: student
+         }).then((response) => {
+             const responseStudent = response.data.student
+             dispatch(addStudent({
+                 id: responseStudent._id,
+                 ...student
+             }))
+         }).catch((error) => {
+             console.log(error);
+         })
     }
 }
