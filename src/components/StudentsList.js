@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {startFetchStudents} from '../actions/students'
 import StudentListItem from './StudentListItem'
+import StudentsListFilters from './StudentsListFilters'
+import selectExpenses from '../selectors/students'
 import '../styles/tables/commonTable.css'
 import '../styles/titles/list-titles.css'
 import '../styles/top-widget-container/top-widget.css'
@@ -18,10 +20,7 @@ export class StudentsList extends React.Component{
             <div className="list-container">
                 <h1 className="list-title">Alunos Tokr</h1>
                 <div className="list-header">
-                    <p>
-                        Buscar: 
-                        <input type="text"/>
-                    </p>
+                    <StudentsListFilters/>
                     <button className="add-button">Adicionar Aluno</button>
                 </div>
                 <div className="table-container">
@@ -52,7 +51,7 @@ export class StudentsList extends React.Component{
 }
 
 const mapStateToProps = (state, props) => ({
-    students: state.students
+    students: selectExpenses(state.students, state.filters)
 })
 
 const mapDispatchToProps = (dispatch) => ({

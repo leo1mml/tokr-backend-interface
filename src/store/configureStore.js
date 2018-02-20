@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import classesReducer from '../reducers/classes'
 import studentsReducer from '../reducers/students'
 import teachersReducer from '../reducers/teachers'
+import filtersReducer from '../reducers/filters'
 import thunk from 'redux-thunk';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -11,7 +12,8 @@ export default () => {
     combineReducers({
       classes: classesReducer,
       students: studentsReducer,
-      teachers: teachersReducer
+      teachers: teachersReducer,
+      filters: filtersReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );
