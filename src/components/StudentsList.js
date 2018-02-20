@@ -5,12 +5,28 @@ import {startFetchStudents} from '../actions/students'
 import StudentListItem from './StudentListItem'
 import StudentsListFilters from './StudentsListFilters'
 import selectExpenses from '../selectors/students'
+import {Paginator} from 'primereact/components/paginator/Paginator';
 import '../styles/tables/commonTable.css'
 import '../styles/titles/list-titles.css'
 import '../styles/top-widget-container/top-widget.css'
 import '../styles/tables/table-container.css'
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/omega/theme.css';
+import 'font-awesome/css/font-awesome.css';
 
 export class StudentsList extends React.Component{
+
+    constructor() {
+        super();
+        this.state = {first: 0, rows: 10};
+    }
+
+    onPageChange = (event) => {
+        this.setState({
+            first: event.first,
+            rows: event.rows
+        })
+    }
 
     componentWillMount(){
         this.props.startFetchStudents()
@@ -38,12 +54,14 @@ export class StudentsList extends React.Component{
                         </thead>
                         <tbody>
                         {
-                            this.props.students.map((student) => {
+                            this.props.students.slice(this.state.first, this.state.first + this.state.rows).map((student) => {
                                 return <StudentListItem key={student._id} {...student} />;
                             })
                         }
                         </tbody>
+
                     </table>
+                    <Paginator first={this.state.first} rows={this.state.rows} totalRecords={this.props.students.length} onPageChange={this.onPageChange}></Paginator>
                 </div>
                 
             </div>
