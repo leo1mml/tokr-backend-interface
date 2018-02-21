@@ -18,7 +18,6 @@ export class StudentsListFilters extends React.Component {
           value={this.props.filters.text}
           onChange={this.onTextChange}
         /></p>
-        
       </div>
     );
   }
