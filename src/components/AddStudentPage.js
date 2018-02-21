@@ -19,7 +19,6 @@ export class AddStudentpage extends React.Component{
     render() {
         return (
             <div>
-                <button className="back-button" onClick={this.goToStudentsPage}>Cancelar</button>
                 <h1 className="list-title">Adicionar Aluno</h1>
                 <div>
                     <StudentForm 

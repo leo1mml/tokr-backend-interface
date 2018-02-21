@@ -2,20 +2,23 @@
     margin: auto auto 5em;
     width: 50%;
     height: 35em;
-    border: 3px solid black;
     padding: 10px;
-    border-radius: 10px
+    border-radius: 10px;
+}
+
+form {
+    display: inline;
+    margin: auto;
 }
 
 .text-box {
-
+    margin-top: 1em;
 }
 
 .container-checkbox {
     display: inline;
     position: relative;
     padding-left: 35px;
-    margin-bottom: 12px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;

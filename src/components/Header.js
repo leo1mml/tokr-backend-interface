@@ -1,5 +1,6 @@
 import React from 'react'
 import '../App.css'
+import {NavLink} from 'react-router-dom'
 
 class Header extends React.Component {
   showSettings (event) {
@@ -9,7 +10,7 @@ class Header extends React.Component {
   render () {
     return (
         <header className="App App-header">
-            <img src={require('../assets/mainPage/logo_tokr.png')} height="60" alt="logo-site"/>
+          <NavLink to="/"><img src={require('../assets/mainPage/logo_tokr.png')} height="60" alt="logo-site"/></NavLink>
         </header>
     );
   }
