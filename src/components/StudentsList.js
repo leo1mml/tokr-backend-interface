@@ -16,14 +16,6 @@ export class StudentsList extends React.Component{
         this.props.startFetchStudents()
     }
 
-    hideLoupe = () => {
-        document.getElementById("loupe").style.visibility="hidden"
-    }
-
-    showLoupe = () => {
-        document.getElementById("loupe").style.visibility="visible"
-    }
-
     render() {
         if(!this.props.students){
             return (<ProgressSpinner/>)
@@ -31,11 +23,7 @@ export class StudentsList extends React.Component{
 
         return (
             <div className="user-list-container">
-                <div className="user-list-search-box">
-                    <img id="loupe" className="search-icon" src={require("../assets/icons/lupa.png")} alt="icone de pesquisa"/>
-                    <input type="text" className="search-input" onBlur={this.showLoupe}
-                        onFocus={this.hideLoupe}/>
-                </div>
+                <StudentsListFilters/>
                 <div className="user-list">
                     {this.props.students.map((student) => {
                         return (
