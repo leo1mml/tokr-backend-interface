@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/forms/form.css'
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/omega/theme.css';
 import 'font-awesome/css/font-awesome.css';

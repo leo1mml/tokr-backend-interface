@@ -1,0 +1,12 @@
+.menuText {
+  color: aliceblue;
+  text-decoration: none;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 60px; }
+
+.is-active {
+  font-weight: bold;
+  border-left: orange 5px solid; }
+
+/*# sourceMappingURL=MenuItem.css.map */

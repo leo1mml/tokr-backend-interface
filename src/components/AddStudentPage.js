@@ -2,8 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {startAddStudent} from '../actions/students'
 import StudentForm from './StudentForm'
-import '../styles/top-widget-container/top-widget.css'
-import '../styles/titles/list-titles.css'
 
 export class AddStudentpage extends React.Component{
 

@@ -16,23 +16,4 @@ class App extends Component {
   }
 } 
 
-
-// class App extends Component {
-//   render() {
-//     return (
-      
-//       <div id="outer-container">
-//         <div className="App App-header">
-//           <Header/>
-//         </div>
-//         <Menu width={230} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
-//             <AppRouter/>
-//         </Menu>
-//         <div id="page-wrap"  className="App App-container">
-//           <h1>Comecei aqui</h1>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 export default App
