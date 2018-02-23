@@ -5,7 +5,7 @@ import StudentsList from '../components/StudentsList'
 import { push as Menu } from 'react-burger-menu'
 import Header from '../components/Header'
 import MenuItems from '../components/MenuItems'
-import '../styles/components/BurgerMenu.css'
+import '../styles-css/components/BurgerMenu.css'
 
 export default () => (
     <BrowserRouter>
