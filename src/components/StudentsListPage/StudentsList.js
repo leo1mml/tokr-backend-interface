@@ -9,11 +9,20 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/omega/theme.css';
 import 'font-awesome/css/font-awesome.css';
 import {ProgressSpinner} from 'primereact/components/progressspinner/ProgressSpinner';
+import StudentListItemDetail from './StudentListItemDetail';
 
 export class StudentsList extends React.Component{
 
+    state = {
+        selectedStudent: undefined
+    }
+
     componentWillMount(){
         this.props.startFetchStudents()
+    }
+
+    clickedUser = (selectedStudent) => {
+        this.setState(() => ({selectedStudent}))
     }
 
     render() {
@@ -28,13 +37,15 @@ export class StudentsList extends React.Component{
                     <div className="user-list">
                         {this.props.students.map((student) => {
                             return (
-                                <StudentListItem key={student._id} {...student}/>
+                                <div key={student._id + "div"} onClick={() => this.clickedUser(student)}>
+                                    <StudentListItem key={student._id} {...student}/>
+                                </div>
                             )
                         })}
                     </div>
                 </div>
                 <div className="user-list-item-detail-container">
-                    
+                    <StudentListItemDetail student={this.state.selectedStudent}/>
                 </div>
                 <button className="new-user-button">Novo Aluno</button>
             </div>

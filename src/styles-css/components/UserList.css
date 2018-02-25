@@ -58,11 +58,13 @@
 .user-list-item-detail-container {
   background-color: white;
   width: 45%;
-  height: 500px;
+  height: 420px;
   position: relative;
   left: 50%;
   top: 40px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  padding: 40px;
+  padding-left: 5px; }
 
 .new-user-button {
   background: #8812BF;
@@ -82,5 +84,52 @@
   width: 1200px;
   margin: auto;
   height: 680px; }
+
+.name-image-title-container {
+  width: 400px;
+  height: 100px;
+  color: black;
+  background-color: white;
+  margin: auto;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  font-size: 25px;
+  font-style: italic;
+  font-weight: lighter; }
+
+.user-image {
+  width: 80px; }
+
+.bottom-buttons-container {
+  height: 60px;
+  width: 500px;
+  margin: auto;
+  justify-content: space-between;
+  display: flex;
+  padding-top: 30px;
+  padding-left: 30px; }
+
+.classes-btn {
+  background-color: #8812BF;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 900;
+  font-style: italic;
+  color: white; }
+
+.edit-btn {
+  background-color: #F98726;
+  width: 200px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 900;
+  font-style: italic;
+  color: white; }
 
 /*# sourceMappingURL=UserList.css.map */
