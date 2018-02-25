@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import {startFetchStudents} from '../actions/students'
+import {startFetchStudents} from '../../actions/students'
 import StudentListItem from './StudentListItem'
 import StudentsListFilters from './StudentsListFilters'
-import selectExpenses from '../selectors/students'
+import selectExpenses from '../../selectors/students'
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/omega/theme.css';
 import 'font-awesome/css/font-awesome.css';
@@ -22,19 +22,25 @@ export class StudentsList extends React.Component{
         }
 
         return (
-            <div className="user-list-container">
-                <StudentsListFilters/>
-                <div className="user-list">
+            <div>
+                <div className="user-list-container">
+                    <StudentsListFilters/>
+                </div>
+                <div className="user-list-item-detail-container">
+
+                </div>
+                <button className="new-user-button">Novo Aluno</button>
+            </div>
+        )
+    }
+}
+{/* <div className="user-list">
                     {this.props.students.map((student) => {
                         return (
                             <StudentListItem key={student._id} {...student}/>
                         )
                     })}
-                </div>
-            </div>
-        )
-    }
-}
+                </div> */}
 
 const mapStateToProps = (state, props) => ({
     students: selectExpenses(state.students, state.filters)

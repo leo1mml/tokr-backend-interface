@@ -113,6 +113,29 @@ button:disabled {
   font-size: 13px;
   padding-left: 30px; }
 
+.user-list-item-detail-container {
+  background-color: white;
+  width: 45%;
+  height: 500px;
+  position: relative;
+  left: 50%;
+  top: 40px;
+  border-radius: 10px; }
+
+.new-user-button {
+  background: #8812BF;
+  width: 30%;
+  height: 80px;
+  left: 58%;
+  top: 55px;
+  position: relative;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 2em;
+  font-style: italic;
+  font-weight: 900; }
+
 .App {
   text-align: center; }
 

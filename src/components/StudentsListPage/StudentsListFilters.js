@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter } from '../actions/filters';
+import { setTextFilter } from '../../actions/filters';
 
 export class StudentsListFilters extends React.Component {
   state = {
@@ -23,7 +23,7 @@ export class StudentsListFilters extends React.Component {
   render() {
     return (
       <div className="user-list-search-box">
-          <img id="loupe" className="search-icon" src={require("../assets/icons/lupa.png")} alt="icone de pesquisa"/>
+          <img id="loupe" className="search-icon" src={require("../../assets/icons/lupa.png")} alt="icone de pesquisa"/>
           <input type="text" className="search-input" onBlur={this.showLoupe}
               onFocus={this.hideLoupe}
               onChange={this.onTextChange}
