@@ -22,25 +22,26 @@ export class StudentsList extends React.Component{
         }
 
         return (
-            <div>
+            <div className="major-list-container">
                 <div className="user-list-container">
                     <StudentsListFilters/>
+                    <div className="user-list">
+                        {this.props.students.map((student) => {
+                            return (
+                                <StudentListItem key={student._id} {...student}/>
+                            )
+                        })}
+                    </div>
                 </div>
                 <div className="user-list-item-detail-container">
-
+                    
                 </div>
                 <button className="new-user-button">Novo Aluno</button>
             </div>
         )
     }
 }
-{/* <div className="user-list">
-                    {this.props.students.map((student) => {
-                        return (
-                            <StudentListItem key={student._id} {...student}/>
-                        )
-                    })}
-                </div> */}
+
 
 const mapStateToProps = (state, props) => ({
     students: selectExpenses(state.students, state.filters)
