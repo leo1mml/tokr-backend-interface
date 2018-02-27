@@ -206,6 +206,37 @@ button:disabled {
 .details-container {
   padding-left: 70px; }
 
+.loading-spinner {
+  margin: 100px auto auto auto;
+  background-color: none;
+  width: 100px;
+  height: 100px; }
+
+.major-container {
+  background-color: #dce0eb;
+  width: 1000px;
+  height: 580px;
+  margin: auto;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between; }
+
+.sub-container {
+  width: 310px;
+  height: 100%;
+  text-align: center; }
+
+.sm-list-container {
+  width: 100%;
+  height: 480px;
+  background-color: orange; }
+
+.classes-input-container {
+  width: 100%;
+  height: 520px;
+  background-color: orange;
+  margin-top: 30px; }
+
 .App {
   text-align: center; }
 
