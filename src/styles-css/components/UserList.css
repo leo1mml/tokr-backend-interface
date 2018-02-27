@@ -44,7 +44,8 @@
   margin-top: 35px;
   width: 100%;
   text-align: left;
-  overflow: scroll;
+  overflow: scroll hidden;
+  overflow-x: hidden;
   position: relative;
   display: inline; }
 
@@ -78,7 +79,11 @@
   border-radius: 10px;
   font-size: 2em;
   font-style: italic;
-  font-weight: 900; }
+  font-weight: 900;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.new-user-button:hover {
+  background: #6d0e9a; }
 
 .major-list-container {
   width: 1200px;
@@ -96,14 +101,14 @@
   justify-content: space-between;
   font-size: 25px;
   font-style: italic;
-  font-weight: lighter; }
+  font-weight: bold; }
 
 .user-image {
   width: 80px; }
 
 .bottom-buttons-container {
   height: 60px;
-  width: 500px;
+  width: 450px;
   margin: auto;
   justify-content: space-between;
   display: flex;
@@ -119,7 +124,11 @@
   font-size: 18px;
   font-weight: 900;
   font-style: italic;
-  color: white; }
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.classes-btn:hover {
+  background: #6d0e9a; }
 
 .edit-btn {
   background-color: #F98726;
@@ -130,6 +139,13 @@
   font-size: 18px;
   font-weight: 900;
   font-style: italic;
-  color: white; }
+  color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
+.edit-btn:hover {
+  background: #f07207; }
+
+.details-container {
+  padding-left: 70px; }
 
 /*# sourceMappingURL=UserList.css.map */

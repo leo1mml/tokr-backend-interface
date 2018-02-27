@@ -5,11 +5,8 @@ import {startFetchStudents} from '../../actions/students'
 import StudentListItem from './StudentListItem'
 import StudentsListFilters from './StudentsListFilters'
 import selectExpenses from '../../selectors/students'
-import 'primereact/resources/primereact.min.css';
-import 'primereact/resources/themes/omega/theme.css';
-import 'font-awesome/css/font-awesome.css';
-import {ProgressSpinner} from 'primereact/components/progressspinner/ProgressSpinner';
 import StudentListItemDetail from './StudentListItemDetail';
+import {ProgressSpinner} from 'primereact/components/progressspinner/ProgressSpinner';
 
 export class StudentsList extends React.Component{
 

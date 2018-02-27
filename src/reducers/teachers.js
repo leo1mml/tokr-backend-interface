@@ -7,6 +7,8 @@ export default (state = teachersReducerDefaultState, action) => {
                 ...state,
                 action.teacher
             ]
+        case "SET_TEACHERS":
+            return action.teachers
     
         default:
             return state;

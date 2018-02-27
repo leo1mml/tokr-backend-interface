@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AddStudentpage from '../components/AddStudentPage'
 import StudentsList from '../components/StudentsListPage/StudentsList'
+import TeachersList from '../components/TeacherListPage/TeacherList'
 import { push as Menu } from 'react-burger-menu'
 import Header from '../components/Header'
 import MenuItems from '../components/MenuItems'
@@ -17,6 +18,7 @@ export default () => (
           <div id="page-wrap">
             <Switch>
               <Route path="/" component={StudentsList} exact={true}/>
+              <Route path="/teachersList" component={TeachersList} exact={true}/>
               <Route path="/addStudent" component={AddStudentpage}/>
             </Switch>
           </div>
