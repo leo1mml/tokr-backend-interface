@@ -23,7 +23,7 @@ export class TeachersList extends React.Component{
     }
 
     render() {
-        if(!this.props.teachers){
+        if(this.props.teachers.length == 0){
             return (<ProgressSpinner/>)
         }
 

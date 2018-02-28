@@ -11,6 +11,10 @@
     height: 50px;
     padding: 20px 0px 20px;
     color: white;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 7;
   }
   
   .App-title {

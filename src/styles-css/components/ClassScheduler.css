@@ -5,7 +5,7 @@
   height: 100px; }
 
 .major-container {
-  background-color: #dce0eb;
+  background-color: #F6F7FA;
   width: 1000px;
   height: 580px;
   margin: auto;
@@ -21,12 +21,66 @@
 .sm-list-container {
   width: 100%;
   height: 480px;
-  background-color: orange; }
+  background-color: white;
+  border-radius: 10px; }
 
 .classes-input-container {
   width: 100%;
   height: 520px;
   background-color: orange;
   margin-top: 30px; }
+
+.search-box-container {
+  width: 100%;
+  height: 40px;
+  background-color: #FBFBFB;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  position: relative; }
+
+.input-search {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  border: none;
+  width: 99.5%;
+  margin: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #FBFBFB; }
+
+.user-image-sm {
+  height: 65px;
+  width: 65px;
+  margin: auto;
+  border-radius: 50%;
+  object-fit: cover; }
+
+.sm-list-item-container {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  height: 70px;
+  justify-content: space-around;
+  padding-bottom: 10px; }
+
+.list-text-container {
+  margin-left: 40px; }
+
+.name-title {
+  font-weight: bolder; }
+
+.cpf-text {
+  font-weight: lighter; }
+
+.title-role {
+  font-size: 20px;
+  font-weight: lighter; }
+
+.user-list-sm {
+  overflow: auto;
+  height: 90.5%; }
 
 /*# sourceMappingURL=ClassScheduler.css.map */

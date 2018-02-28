@@ -1,8 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import moment from 'moment';
 
-const TeacherListItem = ({_id, name, email, cellPhone, birthDate, cpf, address, instruments, operationalArea}) => (
+const TeacherListItem = ({_id, profilePhotoUrl, name, email, cellPhone, birthDate, cpf, address, instruments, operationalArea}) => (
     
     <div className="list-item">
         <p>Nome: {name}</p>

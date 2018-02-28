@@ -31,7 +31,7 @@ const TeacherListItemDetail = (props) => {
                     </div>
                     <div className="user-image-container">
                         {
-                            profileImage(teacher.profileImageUrl)
+                            profileImage(teacher.profilePhotoUrl)
                         }
                     </div>
                 </div>

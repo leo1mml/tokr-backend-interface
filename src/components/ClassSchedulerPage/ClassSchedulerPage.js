@@ -5,11 +5,23 @@ import selectTeachers from '../../selectors/teachers'
 import {startFetchStudents} from '../../actions/students'
 import {startFetchTeachers} from '../../actions/teachers'
 import {ProgressSpinner} from 'primereact/components/progressspinner/ProgressSpinner';
+import TeachersSearchBox from './TearchersSearchBox'
+import SmallTeacherListItem from './SmallTeacherListItem'
 
 
 class ClassSchedulerPage extends React.Component {
 
+    state = {
+        selectedTeacher: undefined
+    }
 
+    componentWillMount(){
+        this.props.startFetchTeachers()
+    }
+
+    clickedUser = (selectedTeacher) => {
+        this.setState(() => ({selectedTeacher}))
+    }
 
     render() {
         // if(!this.props.students || !this.props.teachers) {
@@ -23,9 +35,18 @@ class ClassSchedulerPage extends React.Component {
             <div className="major-container">
                 <div className="sub-container">
                     <div>
-                        <p>Professores</p>
+                        <p className="title-role">Professores</p>
                         <div className="sm-list-container">
-
+                            <TeachersSearchBox/>
+                            <div className="user-list-sm">
+                                {this.props.teachers.map((teacher, index) => {
+                                    return (
+                                        <div key={teacher._id + "div"}>
+                                            <SmallTeacherListItem key={teacher._id} {...teacher}/>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         </div>
                     </div>
 
@@ -49,7 +70,8 @@ class ClassSchedulerPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    students: selectStudents(state.students, state.filters)
+    students: selectStudents(state.students, state.filters),
+    teachers: selectTeachers(state.teachers, state.filters)
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -8,7 +8,6 @@
     display: flex;
     position: absolute;
     z-index: 0;
-    max-width: 550px;
 }
 
 .user-list-search-box {
@@ -34,8 +33,6 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-color: #FBFBFB;
-    // box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    // opacity: 0;
 }
 
 .search-icon {
@@ -117,7 +114,10 @@
 }
 
 .user-image{
-    width: 80px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .bottom-buttons-container {
