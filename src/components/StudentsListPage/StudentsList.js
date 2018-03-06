@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {startFetchStudents} from '../../actions/students'
 import StudentListItem from './StudentListItem'
 import StudentsListFilters from './StudentsListFilters'
-import selectExpenses from '../../selectors/students'
+import selectExpenses from '../../selectors/users'
 import StudentListItemDetail from './StudentListItemDetail';
 import {ProgressSpinner} from 'primereact/components/progressspinner/ProgressSpinner';
 
@@ -52,7 +52,7 @@ export class StudentsList extends React.Component{
 
 
 const mapStateToProps = (state, props) => ({
-    students: selectExpenses(state.students, state.filters)
+    students: selectExpenses(state.students, state.filters.textStudent)
 })
 
 const mapDispatchToProps = (dispatch) => ({

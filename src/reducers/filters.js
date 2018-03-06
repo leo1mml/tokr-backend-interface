@@ -1,9 +1,8 @@
-import moment from 'moment';
-
 // Filters Reducer
 
 const filtersReducerDefaultState = {
-  text: ''
+    textStudent: '',
+    textTeacher: ''
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -11,7 +10,8 @@ export default (state = filtersReducerDefaultState, action) => {
         case 'SET_TEXT_FILTER':
           return {
             ...state,
-            text: action.text
+              textStudent: action.textStudent,
+              textTeacher: action.textTeacher
           };
         default:
           return state;

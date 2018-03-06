@@ -54,7 +54,8 @@ button:disabled {
 
 .is-active {
   font-weight: bold;
-  border-left: orange 5px solid; }
+  border-left: orange 5px solid;
+  padding-left: 55px; }
 
 .user-list-container {
   background: white;
@@ -237,7 +238,7 @@ button:disabled {
 .classes-input-container {
   width: 100%;
   height: 520px;
-  background-color: orange;
+  background-color: none;
   margin-top: 30px; }
 
 .search-box-container {
@@ -265,7 +266,9 @@ button:disabled {
   height: 65px;
   width: 65px;
   margin: auto;
+  margin-top: 8px;
   border-radius: 50%;
+  margin-right: 15px;
   object-fit: cover; }
 
 .sm-list-item-container {
@@ -273,8 +276,10 @@ button:disabled {
   width: 100%;
   background-color: white;
   height: 70px;
-  justify-content: space-around;
-  padding-bottom: 10px; }
+  justify-content: space-between;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 10px; }
 
 .list-text-container {
   margin-left: 40px; }
@@ -292,6 +297,9 @@ button:disabled {
 .user-list-sm {
   overflow: auto;
   height: 90.5%; }
+
+.warning-role-empty {
+  font-weight: lighter; }
 
 .App {
   text-align: center; }

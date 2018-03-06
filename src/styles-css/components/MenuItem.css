@@ -7,6 +7,7 @@
 
 .is-active {
   font-weight: bold;
-  border-left: orange 5px solid; }
+  border-left: orange 5px solid;
+  padding-left: 55px; }
 
 /*# sourceMappingURL=MenuItem.css.map */
