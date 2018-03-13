@@ -84,6 +84,9 @@ class EditTeacherPage extends React.Component {
         this.setState(() => ({ cellPhone }));
     }
 
+    onBirthDateChange = (e) => {
+    }
+
     render () {
         return (
             <div>
@@ -95,7 +98,7 @@ class EditTeacherPage extends React.Component {
                         <input style={styles.input} placeholder="Nome" value={this.state.name} onChange={this.onNameChange} type="tel"/>
                         <InputMask mask="999.999.999-99" style={styles.input} placeholder="CPF" value={this.state.cpf} onChange={this.onCpfChange} type="text"/>
                         <InputMask mask="(99) 99999-9999" style={styles.input} placeholder="Celular" value={this.state.cellPhone} onChange={this.onCellPhoneChange} type="text"/>
-                        <InputMask mask="99/99/9999" style={styles.input} placeholder="Data de Nascimento" value={this.state.birthDate} type="text"/>
+                        <InputMask mask="99/99/9999" style={styles.input} placeholder="Data de Nascimento" value={this.state.birthDate} onChange={this.onBirthDateChange} type="text"/>
                         <select style={styles.select} name="user-status" id="user-status" placeholder="Status" value={(this.state.status)}>
                             <option value="" selected disabled hidden>Status</option>
                             <option value="pendente">Pendente</option>
