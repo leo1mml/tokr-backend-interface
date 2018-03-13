@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import {startFetchTeacherById} from '../../actions/teachers'
 import {InputMask} from 'primereact/components/inputmask/InputMask'
-import moment from 'moment'
+import {createDateFromStringBR, createStringFromDateBR} from '../../helpers/DateHelper'
 
 class EditTeacherPage extends React.Component {
 
@@ -19,7 +19,7 @@ class EditTeacherPage extends React.Component {
             name: props.teacher ? props.teacher.name : '',
             cpf: props.teacher ? props.teacher.cpf : '',
             cellPhone: props.teacher ? props.teacher.cellPhone : '',
-            birthDate: props.teacher ? moment.unix(props.teacher.birthDate).format("DD/MM/YYYY") : '',
+            birthDate: props.teacher ? (props.teacher.birthDate ? createStringFromDateBR(props.teacher.birthDate) : undefined) : '',
             status: props.teacher ? props.teacher.status : '',
             countryState: props.teacher ? props.teacher.address[0] : '',
             city: props.teacher ? props.teacher.address[1] : '',
@@ -30,9 +30,6 @@ class EditTeacherPage extends React.Component {
     }
 
     selectInstrument = (id) => {
-
-        console.log(this.state.instruments);
-
         this.setState(() => ({
             instruments: !this.state.instruments.includes(id) ? this.state.instruments.concat(id) : this.state.instruments.filter((instrument) => {
                 return instrument !== id
@@ -85,6 +82,34 @@ class EditTeacherPage extends React.Component {
     }
 
     onBirthDateChange = (e) => {
+        
+        const birthDate = e.value
+        console.log(this.state.birthDate);
+        this.setState(() => ({ birthDate }));
+    }
+
+    onStatusChange = (e) => {
+        const status = e.target.value
+        this.setState(() => ({status}))
+    }
+
+    onUFChange = (e) => {
+        const countryState = e.target.value
+        this.setState(() => ({countryState}))
+    }
+
+    onCityChange = (e) => {
+        const city = e.target.value
+        this.setState(() => ({city}))
+    }
+
+    onAddresChange = (e) => {
+        const address = e.target.value
+        this.setState(() => ({address}))
+    }
+    onOperationalAreaChange = (e) => {
+        const operationalArea = e.target.value
+        this.setState(() => ({operationalArea}))
     }
 
     render () {
@@ -99,15 +124,16 @@ class EditTeacherPage extends React.Component {
                         <InputMask mask="999.999.999-99" style={styles.input} placeholder="CPF" value={this.state.cpf} onChange={this.onCpfChange} type="text"/>
                         <InputMask mask="(99) 99999-9999" style={styles.input} placeholder="Celular" value={this.state.cellPhone} onChange={this.onCellPhoneChange} type="text"/>
                         <InputMask mask="99/99/9999" style={styles.input} placeholder="Data de Nascimento" value={this.state.birthDate} onChange={this.onBirthDateChange} type="text"/>
-                        <select style={styles.select} name="user-status" id="user-status" placeholder="Status" value={(this.state.status)}>
-                            <option value="" selected disabled hidden>Status</option>
+                        <select style={styles.select} name="user-status" id="user-status" placeholder="Status" defaultValue={this.state.status ? this.state.status : ""} onChange={this.onStatusChange}>
+                            <option value="" disabled hidden>Status</option>
                             <option value="pendente">Pendente</option>
                             <option value="ativo">Ativo</option>
                             <option value="inativo">Inativo</option>
                         </select>
                     </div>
                     <div style={styles.formsRightContainer}>
-                        <select style={styles.select} name="estados-brasil" value={this.state.countryState}>
+                        <select style={styles.select} name="estados-brasil" defaultValue={this.state.countryState ? this.state.countryState : "UF"} onChange={this.onUFChange}>
+                            <option value="UF" disabled hidden>Estado(UF)</option>
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
                             <option value="AP">Amapá</option>
@@ -136,9 +162,9 @@ class EditTeacherPage extends React.Component {
                             <option value="SE">Sergipe</option>
                             <option value="TO">Tocantins</option>
                         </select>
-                        <input style={styles.input} placeholder="Cidade" value={this.state.city} type="text"/>
-                        <input style={styles.input} placeholder="Endereço" value={this.state.address} type="text"/>
-                        <input style={styles.input} placeholder="Área Operacional" value={this.state.operationalArea} type="text"/>
+                        <input style={styles.input} placeholder="Cidade" value={this.state.city} type="text" onChange={this.onCityChange}/>
+                        <input style={styles.input} placeholder="Endereço" value={this.state.address} type="text" onChange={this.onAddresChange}/>
+                        <input style={styles.input} placeholder="Área Operacional" value={this.state.operationalArea} type="text" onChange={this.onOperationalAreaChange}/>
                     </div>
                     <div style={styles.buttonsContainer}>
                         <div style={styles.buttonsFirstLine}>
@@ -152,7 +178,7 @@ class EditTeacherPage extends React.Component {
                         </div>
                     </div>
                 </div>
-                <button style={styles.saveButton}>Salvar</button>
+                <button style={styles.saveButton} onClick={this.prepareToSave}>Salvar</button>
                 </div>
             </div>
         )
