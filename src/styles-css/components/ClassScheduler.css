@@ -90,4 +90,25 @@
 .warning-role-empty {
   font-weight: lighter; }
 
+.selected-role-title {
+  font-weight: bold; }
+
+.date-picker-container {
+  margin-top: 60px; }
+
+.schedule-class-btn {
+  height: 50px;
+  width: 180px;
+  border: none;
+  color: white;
+  background-color: #8812BF;
+  border-radius: 10px;
+  margin-top: 130px;
+  font-size: 16px;
+  font-weight: 900;
+  font-style: italic; }
+
+.schedule-class-btn:hover {
+  background-color: #6d0e9a; }
+
 /*# sourceMappingURL=ClassScheduler.css.map */

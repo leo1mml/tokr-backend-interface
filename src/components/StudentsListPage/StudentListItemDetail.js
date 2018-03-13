@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 const StudentListItemDetail = (props) => {
@@ -25,7 +24,9 @@ const StudentListItemDetail = (props) => {
                                 if(index < 1){
                                     return namePiece + " "
                                 }else if( index === 1) {
-                                    return namePiece                                }
+                                    return namePiece                                
+                                }
+                                return ''
                             } )}</p>
                     </div>
                     <div className="user-image-container">
@@ -61,8 +62,10 @@ const StudentListItemDetail = (props) => {
                     </p>
                 </div>
                 <div className="bottom-buttons-container">
-                    <button className="classes-btn">Aulas</button>
-                    <button className="edit-btn">Editar</button>
+                    <button className="delete-btn">Excluir</button>
+                    <Link to={`/editStudent/${student._id}`}>
+                        <button className="edit-btn">Editar</button>
+                    </Link>
                 </div>
             </div>
         )

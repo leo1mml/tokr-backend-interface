@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
 import {startFetchTeachers} from '../../actions/teachers'
 import TeacherListItem from './TeacherListItem'
 import TeachersListFilters from './TeachersListFilters'
@@ -23,7 +22,7 @@ export class TeachersList extends React.Component{
     }
 
     render() {
-        if(this.props.teachers.length == 0){
+        if(this.props.teachers.length === 0){
             return (<ProgressSpinner/>)
         }
 
@@ -44,7 +43,7 @@ export class TeachersList extends React.Component{
                 <div className="user-list-item-detail-container">
                     <TeacherListItemDetail teacher={this.state.selectedTeacher}/>
                 </div>
-                <button className="new-user-button">Novo Professor</button>
+                <button className="new-user-button">Aulas</button>
             </div>
         )
     }

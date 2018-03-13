@@ -38,7 +38,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setTextFilter: (text) => dispatch(setTextFilter(text)),
+  setTextFilter: (text) => dispatch(setTextFilter(text, undefined)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StudentsListFilters);

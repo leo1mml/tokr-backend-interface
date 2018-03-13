@@ -129,8 +129,8 @@
     padding-top: 30px;
     padding-left: 30px;
 }
-.classes-btn {
-    background-color: #8812BF;
+.delete-btn {
+    background-color: #BF1248;
     width: 200px;
     height: 50px;
     border: none;
@@ -141,8 +141,8 @@
     color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.classes-btn:hover {
-    background: darken($color: #8812BF, $amount: 8);
+.delete-btn:hover {
+    background: darken($color: #BF1248, $amount: 8);
 }
 
 .edit-btn {

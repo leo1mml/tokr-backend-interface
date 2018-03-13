@@ -4,6 +4,7 @@ import AddStudentpage from '../components/AddStudentPage'
 import StudentsList from '../components/StudentsListPage/StudentsList'
 import TeachersList from '../components/TeacherListPage/TeacherList'
 import ClassSchedulerPage from '../components/ClassSchedulerPage/ClassSchedulerPage'
+import EditTeacherPage from '../components/EditTeacherPage/EditTeacherPage'
 import { push as Menu } from 'react-burger-menu'
 import Header from '../components/Header'
 import MenuItems from '../components/MenuItems'
@@ -22,6 +23,7 @@ export default () => (
               <Route path="/studentsList" component={StudentsList} exact={true}/>
               <Route path="/teachersList" component={TeachersList} exact={true}/>
               <Route path="/addStudent" component={AddStudentpage}/>
+              <Route path="/editTeacher/:id" component={EditTeacherPage}/>
             </Switch>
           </div>
       </div>

@@ -9,6 +9,8 @@ export default (state = teachersReducerDefaultState, action) => {
             ]
         case "SET_TEACHERS":
             return action.teachers
+        case "SET_TEACHER":
+            return action.teacher
     
         default:
             return state;

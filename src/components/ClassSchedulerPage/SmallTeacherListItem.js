@@ -20,7 +20,9 @@ const SmallTeacherListItem = ({name, cpf, profilePhotoUrl}) => {
                                 if(index < 1){
                                     return namePiece + " "
                                 }else if( index === 1) {
-                                    return namePiece                                }
+                                    return namePiece                                
+                                }
+                                return ''
                             } )}</p></span>
                 <span className="cpf-text"><p>{cpf}</p></span>
             </div>
