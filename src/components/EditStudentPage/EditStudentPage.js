@@ -1,32 +1,34 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import {startPatchTeacherById} from '../../actions/teachers'
+import {startPatchStudentById} from '../../actions/students'
 import {InputMask} from 'primereact/components/inputmask/InputMask'
 import {createDateFromStringBR, createStringFromDateBR} from '../../helpers/DateHelper'
 import {NotificationManager} from 'react-notifications';
 
-class EditTeacherPage extends React.Component {
+class EditStudentPage extends React.Component {
 
     constructor(props) {
         super(props)
         
+        console.log("PROPS MAN",props.student);
+        
 
         this.state = {
-            guitarra: props.teacher ? props.teacher.instruments.includes("guitarra") : false,
-            violao: props.teacher ? props.teacher.instruments.includes("violao") : false,
-            baixo: props.teacher ? props.teacher.instruments.includes("baixo") : false,
-            ukulele: props.teacher ? props.teacher.instruments.includes("ukulele") : false,
-            teclado: props.teacher ? props.teacher.instruments.includes("teclado") : false,
-            name: props.teacher ? props.teacher.name : '',
-            cpf: props.teacher ? props.teacher.cpf : '',
-            cellPhone: props.teacher ? props.teacher.cellPhone : '',
-            birthDate: props.teacher ? (props.teacher.birthDate ? createStringFromDateBR(props.teacher.birthDate) : undefined) : '',
-            status: props.teacher ? props.teacher.status : '',
-            countryState: props.teacher ? props.teacher.address[0] : '',
-            city: props.teacher ? props.teacher.address[1] : '',
-            address: props.teacher ? props.teacher.address[2] : '',
-            operationalArea: props.teacher? props.teacher.operationalArea : '',
-            instruments: props.teacher? (props.teacher.instruments ? props.teacher.instruments : []) : []
+            guitarra: props.student ? props.student.instruments.includes("guitarra") : false,
+            violao: props.student ? props.student.instruments.includes("violao") : false,
+            baixo: props.student ? props.student.instruments.includes("baixo") : false,
+            ukulele: props.student ? props.student.instruments.includes("ukulele") : false,
+            teclado: props.student ? props.student.instruments.includes("teclado") : false,
+            name: props.student ? props.student.name : '',
+            cpf: props.student ? props.student.cpf : '',
+            cellPhone: props.student ? props.student.cellPhone : '',
+            birthDate: props.student ? createStringFromDateBR(props.student.birthDate) : '',
+            status: props.student ? props.student.status : '',
+            countryState: props.student ? props.student.address[0] : '',
+            city: props.student ? props.student.address[1] : '',
+            address: props.student ? (props.student.address[2] && props.student.address[2]) : '',
+            operationalArea: props.student? props.student.operationalArea : '',
+            instruments: props.student? (props.student.instruments ? props.student.instruments : []) : []
         }
     }
 
@@ -106,7 +108,6 @@ class EditTeacherPage extends React.Component {
     onBirthDateChange = (e) => {
         
         const birthDate = e.value
-        console.log(this.state.birthDate);
         this.setState(() => ({ birthDate }));
     }
 
@@ -137,36 +138,38 @@ class EditTeacherPage extends React.Component {
     prepareToSave = () => {
         if(this.state.status === '' || !this.state.status){
             this.createNotification('warning', 'Escolha o status', 'Campos faltando')
-            return
         }
 
         let address = [this.state.countryState, this.state.city, this.state.address]
         let birthDate = createDateFromStringBR(this.state.birthDate)
-        let alteredTeacher = {
+        console.log('estado: ', this.state.birthDate);
+        console.log('birthDate altered student: ', createDateFromStringBR(this.state.birthDate));
+        
+        let alteredStudent = {
             name: this.state.name,
             cpf: this.state.cpf,
             cellPhone: this.state.cellPhone,
-            birthDate: birthDate ? birthDate : this.props.teacher.birthDate,
+            birthDate: birthDate,
             status: this.state.status,
             address,
-            operationalArea: this.state.operationalArea,
             instruments: this.state.instruments
         }
-        this.props.startPatchTeacherById(this.props.teacher._id, alteredTeacher)
+        console.log(alteredStudent);
+        this.props.startPatchStudentById(this.props.student._id, alteredStudent)
     }
 
     render () {
         return (
             <div>
                 <div style={styles.superContainer}>
-                <h2 style={styles.title}>Professor</h2>
+                <h2 style={styles.title}>Estudante</h2>
                 <div style={styles.formsContainer}>
                     <div style={styles.formsLeftContainer}>
                         
                         <input style={styles.input} placeholder="Nome" value={this.state.name} onChange={this.onNameChange} type="tel"/>
                         <InputMask mask="999.999.999-99" style={styles.input} placeholder="CPF" value={this.state.cpf} onChange={this.onCpfChange} type="text"/>
                         <InputMask mask="(99) 99999-9999" style={styles.input} placeholder="Celular" value={this.state.cellPhone} onChange={this.onCellPhoneChange} type="text"/>
-                        <InputMask mask="99/99/9999" style={styles.input} placeholder="Data de Nascimento" value={createStringFromDateBR(this.state.birthDate)} onChange={this.onBirthDateChange} type="text"/>
+                        <InputMask mask="99/99/9999" style={styles.input} placeholder="Data de Nascimento" value={createStringFromDateBR(Date(this.state.birthDate))} onChange={this.onBirthDateChange} type="text"/>
                         <select style={styles.select} name="user-status" id="user-status" placeholder="Status" defaultValue={this.state.status ? this.state.status : ""} onChange={this.onStatusChange}>
                             <option value="" disabled hidden>Status</option>
                             <option value="pendente">Pendente</option>
@@ -231,14 +234,14 @@ class EditTeacherPage extends React.Component {
 
 
 const mapStateToProps = (state, props) => ({
-    teacher: state.teachers.find((teacher) => teacher._id === props.match.params.id)
+    student: state.students.find((student) => student._id === props.match.params.id)
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    startPatchTeacherById: (id, body) => dispatch(startPatchTeacherById(id, body))
+    startPatchStudentById: (id, body) => dispatch(startPatchStudentById(id, body))
   });
   
-export default connect(mapStateToProps, mapDispatchToProps)(EditTeacherPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EditStudentPage);
 
 const styles = {
     formsContainer: {

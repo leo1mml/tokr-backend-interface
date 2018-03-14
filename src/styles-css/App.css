@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
+@import url(../../node_modules/react-notifications/lib/notifications.css);
 html {
   font-size: 62.5%; }
 

@@ -5,10 +5,12 @@ import StudentsList from '../components/StudentsListPage/StudentsList'
 import TeachersList from '../components/TeacherListPage/TeacherList'
 import ClassSchedulerPage from '../components/ClassSchedulerPage/ClassSchedulerPage'
 import EditTeacherPage from '../components/EditTeacherPage/EditTeacherPage'
+import EditStudentPage from '../components/EditStudentPage/EditStudentPage'
 import { push as Menu } from 'react-burger-menu'
 import Header from '../components/Header'
 import MenuItems from '../components/MenuItems'
 import '../styles-css/components/BurgerMenu.css'
+import {NotificationContainer} from 'react-notifications';
 
 export default () => (
     <BrowserRouter>
@@ -24,8 +26,10 @@ export default () => (
               <Route path="/teachersList" component={TeachersList} exact={true}/>
               <Route path="/addStudent" component={AddStudentpage}/>
               <Route path="/editTeacher/:id" component={EditTeacherPage}/>
+              <Route path="/editStudent/:id" component={EditStudentPage}/>
             </Switch>
           </div>
+          <NotificationContainer/>
       </div>
     </BrowserRouter>
 )

@@ -1,4 +1,5 @@
-const axios = require('axios')
+import axios from 'axios'
+import {NotificationManager} from 'react-notifications';
 
 export const addStudent = (student) => ({
     type: 'ADD_STUDENT',
@@ -9,6 +10,11 @@ export const addStudent = (student) => ({
 export const setStudents = (students = []) => ({
     type: 'SET_STUDENTS',
     students
+})
+
+export const setStudent = (student) => ({
+    type: 'SET_STUDENT',
+    student
 })
 
 export const startFetchStudents = () => {
@@ -52,5 +58,46 @@ export const startAddStudent = (student = {}) => {
          }).catch((error) => {
              console.log(error);
          })
+    }
+}
+
+export const startFetchStudentById = (id) => {
+    return (dispatch) => {
+        axios({
+            url: 'https://tokr-server-api.herokuapp.com/students/' + id,
+            method: 'get',
+            headers: {
+                'app-pass': '90a8hsdnfilehuqahnfhiuh4rierrhqfhqhqhqeph9dklnnvknjjafaiojia98hf3iujklaaoiophhpafuuq',
+                'Content-Type': 'application/json'
+            }
+        }).then((response) => {
+            const student = response.data.student
+            dispatch(setStudent(student))
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+}
+
+
+export const startPatchStudentById = (id, body) => {
+    return (dispatch) => {
+        axios({
+            url: 'https://tokr-server-api.herokuapp.com/students/patch/' + id,
+            method: 'patch',
+            headers: {
+                'app-pass': '90a8hsdnfilehuqahnfhiuh4rierrhqfhqhqhqeph9dklnnvknjjafaiojia98hf3iujklaaoiophhpafuuq',
+                'Content-Type': 'application/json'
+            },
+            data: body
+        }).then((response) => {
+            console.log('passei com sucesso');
+            NotificationManager.success('Dados Alterados', 'Sucesso!');
+        })
+        .catch((err) => {
+            console.log('passei com erro');
+            console.log(err);
+        })
     }
 }

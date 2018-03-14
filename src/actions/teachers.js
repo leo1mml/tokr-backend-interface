@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {NotificationManager} from 'react-notifications';
 
 export const addTeacher = (teacher) => ({
     type: 'ADD_TEACHER',
@@ -9,6 +10,10 @@ export const addTeacher = (teacher) => ({
 export const setTeachers = (teachers = []) => ({
     type: 'SET_TEACHERS',
     teachers
+})
+export const setTeacher = (teacher) => ({
+    type: 'SET_TEACHER',
+    teacher
 })
 
 export const startFetchTeachers = () => {
@@ -33,11 +38,6 @@ export const startFetchTeachers = () => {
     }
 }
 
-const setTeacher = (teacher = undefined) => ({
-    type: 'SET_TEACHER',
-    teacher
-})
-
 export const startFetchTeacherById = (id) => {
     return (dispatch) => {
         axios({
@@ -53,6 +53,28 @@ export const startFetchTeacherById = (id) => {
         })
         .catch((err) => {
             dispatch(setTeacher(undefined))
+            console.log(err);
+        })
+    }
+}
+
+export const startPatchTeacherById = (id, body) => {
+    console.log("Identidate: ",id);
+    return (dispatch) => {
+        axios({
+            url: 'https://tokr-server-api.herokuapp.com/teachers/patch/' + id,
+            method: 'patch',
+            headers: {
+                'app-pass': '90a8hsdnfilehuqahnfhiuh4rierrhqfhqhqhqeph9dklnnvknjjafaiojia98hf3iujklaaoiophhpafuuq',
+                'Content-Type': 'application/json'
+            },
+            data: body
+        }).then((response) => {
+            console.log('passei com sucesso');
+            NotificationManager.success('Dados Alterados', 'Sucesso!');
+        })
+        .catch((err) => {
+            console.log('passei com erro');
             console.log(err);
         })
     }
