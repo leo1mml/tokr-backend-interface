@@ -20,7 +20,7 @@ class EditTeacherPage extends React.Component {
             name: props.teacher ? props.teacher.name : '',
             cpf: props.teacher ? props.teacher.cpf : '',
             cellPhone: props.teacher ? props.teacher.cellPhone : '',
-            birthDate: props.teacher ? (props.teacher.birthDate ? createStringFromDateBR(props.teacher.birthDate) : undefined) : '',
+            birthDate: props.student ? createStringFromDateBR(props.student.birthDate) : '',
             status: props.teacher ? props.teacher.status : '',
             countryState: props.teacher ? props.teacher.address[0] : '',
             city: props.teacher ? props.teacher.address[1] : '',
@@ -106,7 +106,6 @@ class EditTeacherPage extends React.Component {
     onBirthDateChange = (e) => {
         
         const birthDate = e.value
-        console.log(this.state.birthDate);
         this.setState(() => ({ birthDate }));
     }
 
@@ -135,24 +134,34 @@ class EditTeacherPage extends React.Component {
     } 
 
     prepareToSave = () => {
+
+        let shouldSave = true
+        let birthDate = undefined
         if(this.state.status === '' || !this.state.status){
             this.createNotification('warning', 'Escolha o status', 'Campos faltando')
-            return
+            shouldSave = false
         }
 
         let address = [this.state.countryState, this.state.city, this.state.address]
-        let birthDate = createDateFromStringBR(this.state.birthDate)
-        let alteredTeacher = {
-            name: this.state.name,
-            cpf: this.state.cpf,
-            cellPhone: this.state.cellPhone,
-            birthDate: birthDate ? birthDate : this.props.teacher.birthDate,
-            status: this.state.status,
-            address,
-            operationalArea: this.state.operationalArea,
-            instruments: this.state.instruments
+        if(this.state.birthDate){
+            birthDate = createDateFromStringBR(this.state.birthDate)
+        }else {
+            this.createNotification('warning', 'Escolha a data de nascimento', 'Campos faltando')
+            shouldSave = false
         }
-        this.props.startPatchTeacherById(this.props.teacher._id, alteredTeacher)
+        if(shouldSave){
+            let alteredTeacher = {
+                name: this.state.name,
+                cpf: this.state.cpf,
+                cellPhone: this.state.cellPhone,
+                birthDate: birthDate,
+                status: this.state.status,
+                address,
+                operationalArea: this.state.operationalArea,
+                instruments: this.state.instruments
+            }
+            this.props.startPatchTeacherById(this.props.teacher._id, alteredTeacher)
+        }
     }
 
     render () {
@@ -166,7 +175,7 @@ class EditTeacherPage extends React.Component {
                         <input style={styles.input} placeholder="Nome" value={this.state.name} onChange={this.onNameChange} type="tel"/>
                         <InputMask mask="999.999.999-99" style={styles.input} placeholder="CPF" value={this.state.cpf} onChange={this.onCpfChange} type="text"/>
                         <InputMask mask="(99) 99999-9999" style={styles.input} placeholder="Celular" value={this.state.cellPhone} onChange={this.onCellPhoneChange} type="text"/>
-                        <InputMask mask="99/99/9999" style={styles.input} placeholder="Data de Nascimento" value={createStringFromDateBR(this.state.birthDate)} onChange={this.onBirthDateChange} type="text"/>
+                        <InputMask mask="99/99/9999" style={styles.input} placeholder="Data de Nascimento" value={this.state.birthDate} onChange={this.onBirthDateChange} type="text"/>
                         <select style={styles.select} name="user-status" id="user-status" placeholder="Status" defaultValue={this.state.status ? this.state.status : ""} onChange={this.onStatusChange}>
                             <option value="" disabled hidden>Status</option>
                             <option value="pendente">Pendente</option>

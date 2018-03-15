@@ -29,7 +29,7 @@ export class StudentsList extends React.Component{
         console.log(this.state);
 
         //Handle state of selected status
-        if(this.state.selectedStatus === id){
+        if(this.props.studentFilter === id){
             this.props.setStatusFilter('')
         }else {
             this.props.setStatusFilter(id)
@@ -88,6 +88,7 @@ export class StudentsList extends React.Component{
 
 
 const mapStateToProps = (state, props) => ({
+    studentFilter: state.filters.studentStatus,
     students: selectStudents(state.students, state.filters.textStudent, state.filters.studentStatus)
 })
 

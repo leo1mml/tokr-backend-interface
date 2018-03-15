@@ -11,7 +11,7 @@ export class TeachersList extends React.Component{
 
     state = {
         selectedTeacher: undefined,
-        selectedStatus: 'pendente'
+        selectedStatus: ''
     }
 
     componentWillMount(){
@@ -29,7 +29,7 @@ export class TeachersList extends React.Component{
         console.log(this.state);
 
         //Handle state of selected status
-        if(this.state.selectedStatus === id){
+        if(this.props.teacherFilter === id){
             this.props.setStatusFilter('')
         }else {
             this.props.setStatusFilter(id)
@@ -88,6 +88,7 @@ export class TeachersList extends React.Component{
 
 
 const mapStateToProps = (state, props) => ({
+    teacherFilter: state.filters.teacherStatus,
     teachers: selectTeachers(state.teachers, state.filters.textTeacher,  state.filters.teacherStatus)
 })
 
@@ -101,8 +102,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(TeachersList);
 const styles = {
     statusButtonsContainer: {
         position: 'absolute',
-        right: '150px',
-        top: '650px',
+        marginLeft: '700px',
+        marginTop: '70px',
         width: '402px',
         height: '70px',
         display: 'flex',
