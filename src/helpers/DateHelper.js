@@ -6,7 +6,7 @@ export const createDateFromStringBR = (string) => {
     }
     let dateComponents = string.split('/')
     let day = dateComponents[0]
-    let month = dateComponents[1]
+    let month = dateComponents[1] - 1
     let year = dateComponents[2]
     let date = new Date(year, month, day).toISOString()
     return date

@@ -9,9 +9,6 @@ class EditStudentPage extends React.Component {
 
     constructor(props) {
         super(props)
-        
-        console.log("PROPS MAN",props.student);
-        
 
         this.state = {
             guitarra: props.student ? props.student.instruments.includes("guitarra") : false,
@@ -136,14 +133,15 @@ class EditStudentPage extends React.Component {
     }
 
     prepareToSave = () => {
+        if(this.state.name === '' || !this.state.name){
+            return
+        }
         if(this.state.status === '' || !this.state.status){
             this.createNotification('warning', 'Escolha o status', 'Campos faltando')
         }
 
         let address = [this.state.countryState, this.state.city, this.state.address]
         let birthDate = createDateFromStringBR(this.state.birthDate)
-        console.log('estado: ', this.state.birthDate);
-        console.log('birthDate altered student: ', createDateFromStringBR(this.state.birthDate));
         
         let alteredStudent = {
             name: this.state.name,
@@ -154,7 +152,6 @@ class EditStudentPage extends React.Component {
             address,
             instruments: this.state.instruments
         }
-        console.log(alteredStudent);
         this.props.startPatchStudentById(this.props.student._id, alteredStudent)
     }
 
@@ -169,7 +166,7 @@ class EditStudentPage extends React.Component {
                         <input style={styles.input} placeholder="Nome" value={this.state.name} onChange={this.onNameChange} type="tel"/>
                         <InputMask mask="999.999.999-99" style={styles.input} placeholder="CPF" value={this.state.cpf} onChange={this.onCpfChange} type="text"/>
                         <InputMask mask="(99) 99999-9999" style={styles.input} placeholder="Celular" value={this.state.cellPhone} onChange={this.onCellPhoneChange} type="text"/>
-                        <InputMask mask="99/99/9999" style={styles.input} placeholder="Data de Nascimento" value={createStringFromDateBR(Date(this.state.birthDate))} onChange={this.onBirthDateChange} type="text"/>
+                        <InputMask mask="99/99/9999" style={styles.input} placeholder="Data de Nascimento" value={this.state.birthDate} onChange={this.onBirthDateChange} type="text"/>
                         <select style={styles.select} name="user-status" id="user-status" placeholder="Status" defaultValue={this.state.status ? this.state.status : ""} onChange={this.onStatusChange}>
                             <option value="" disabled hidden>Status</option>
                             <option value="pendente">Pendente</option>

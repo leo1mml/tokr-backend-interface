@@ -132,7 +132,7 @@ class EditTeacherPage extends React.Component {
     onOperationalAreaChange = (e) => {
         const operationalArea = e.target.value
         this.setState(() => ({operationalArea}))
-    }
+    } 
 
     prepareToSave = () => {
         if(this.state.status === '' || !this.state.status){

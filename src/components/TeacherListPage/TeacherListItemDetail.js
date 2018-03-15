@@ -16,7 +16,6 @@ const TeacherListItemDetail = (props) => {
     }
 
     if(teacher){
-        console.log(teacher);
         return (
             <div>
                 <div className="name-image-title-container">
@@ -56,7 +55,7 @@ const TeacherListItemDetail = (props) => {
                     </p>
                 </div>
                 <div className="bottom-buttons-container">
-                    <button className="delete-btn">Excluir</button>
+                    <button className="classes-btn">Aulas</button>
                     <Link to={`/editTeacher/${teacher._id}`}>
                         <button className="edit-btn">Editar</button>
                     </Link>
@@ -64,7 +63,6 @@ const TeacherListItemDetail = (props) => {
             </div>
         )
     }
-    console.log(teacher);
     return (
         <div>
             <h3>Nenhum Professor Selecionado</h3>

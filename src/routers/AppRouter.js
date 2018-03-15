@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import AddStudentpage from '../components/AddStudentPage'
 import StudentsList from '../components/StudentsListPage/StudentsList'
 import TeachersList from '../components/TeacherListPage/TeacherList'
 import ClassSchedulerPage from '../components/ClassSchedulerPage/ClassSchedulerPage'
@@ -24,7 +23,6 @@ export default () => (
               <Route path="/" component={ClassSchedulerPage} exact={true}/>
               <Route path="/studentsList" component={StudentsList} exact={true}/>
               <Route path="/teachersList" component={TeachersList} exact={true}/>
-              <Route path="/addStudent" component={AddStudentpage}/>
               <Route path="/editTeacher/:id" component={EditTeacherPage}/>
               <Route path="/editStudent/:id" component={EditStudentPage}/>
             </Switch>

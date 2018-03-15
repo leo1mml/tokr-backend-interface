@@ -4,3 +4,13 @@ export const setTextFilter = (textStudent = '', textTeacher = '') => ({
     textStudent,
     textTeacher
 });
+
+export const setStatusFilter = (studentStatus = '', teacherStatus = '') => {
+    console.log('studentStatus: ', studentStatus);
+    console.log('teacherStatus: ', teacherStatus);
+    return ({
+        type: 'SET_STATUS_FILTER',
+        studentStatus,
+        teacherStatus
+    })
+}
