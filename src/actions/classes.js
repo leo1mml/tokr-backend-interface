@@ -71,4 +71,23 @@ export const startFetchClassesByStudentId = (id) => {
         })
     }
 }
+export const startFetchClassesByTeacherId = (id) => {
+    return (dispatch) => {
+        axios({
+            url: `https://tokr-server-api.herokuapp.com/classes/classesForTeacher/${id}`,
+            method: 'get',
+            headers: {
+                'app-pass': '90a8hsdnfilehuqahnfhiuh4rierrhqfhqhqhqeph9dklnnvknjjafaiojia98hf3iujklaaoiophhpafuuq',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => {
+            console.log(response.data);
+            dispatch(setClasses(response.data.classes))
+        })
+        .catch((err) => {
+            console.log('passei com erro aqui ó:', err);
+        })
+    }
+}
 

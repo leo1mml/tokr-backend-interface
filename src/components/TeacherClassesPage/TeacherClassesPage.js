@@ -1,0 +1,124 @@
+import React from 'react'
+import { connect } from 'react-redux';
+import PhotoName from '../StudentClassesPage/PhotoName';
+import TextComponent from '../StudentClassesPage/TextComponent'
+import TeacherClassList from './TeacherClassList'
+import {Rating} from 'primereact/components/rating/Rating';
+import selectClasses from '../../selectors/classes'
+import {startFetchClassesByTeacherId}  from '../../actions/classes'
+import {startFetchStudents} from '../../actions/students'
+import {startFetchTeachers} from '../../actions/teachers'
+
+class TeacherClassesPage extends React.Component {
+
+    state = {
+        selectedClass: undefined
+    }
+
+    componentDidMount(nextProps) {
+        if(this.props.teacher){
+            this.props.startFetchClassesByTeacherId(this.props.teacher._id)
+            this.props.startFetchStudents()
+            this.props.startFetchTeachers()
+        }
+    }
+
+    clickedClass = (selectedClass) => {
+        this.setState(() => ({selectedClass}))
+    }
+
+    render () {
+        return (
+            <div className="page-container">
+                <div className="left-container">
+                    <div>
+                        {
+                            this.props.teacher?
+                            (<PhotoName name={this.props.teacher.name} profilePhotoUrl={this.props.teacher.profilePhotoUrl}/>)
+                            :
+                            (<PhotoName name="Sem Aluno" profilePhotoUrl=""/>)
+                        }
+                        
+                    </div>
+                    <div>
+                        {
+                            this.state.selectedClass ? 
+                            (
+                                <div>
+                                    <div className="rating-container">
+                                        <Rating value={this.state.selectedClass.studentGrade} cancel={false}/>
+                                        <p className="grade">{this.state.selectedClass.studentGrade}</p>
+                                    </div>
+                                    <div>
+                                        <TextComponent text={this.state.selectedClass.teacherNote}/>
+                                    </div>
+                                </div>
+                            )
+                                 :
+                            (
+                                <div>
+                                    <div className="rating-container">
+                                        <Rating value={0} cancel={false}/>
+                                        <p className="grade">?</p>
+                                    </div>
+                                    <div>
+                                        <TextComponent text="Selecione Uma Aula"/>
+                                    </div>
+                                </div>
+
+                            )
+                        }
+                    </div>
+                        {
+                            this.state.selectedClass ? 
+                            (
+                                <div>
+                                    <div className="rating-container">
+                                        <Rating value={this.state.selectedClass.teacherGrade} cancel={false}/>
+                                        <p className="grade">{this.state.selectedClass.teacherGrade}</p>
+                                    </div>
+                                    <div>
+                                        <TextComponent text={this.state.selectedClass.studentNote}/>
+                                    </div>
+                                </div>
+                            )
+                                 :
+                            (
+                                <div>
+                                    <div className="rating-container">
+                                        <Rating value={0} cancel={false}/>
+                                        <p className="grade">?</p>
+                                    </div>
+                                    <div>
+                                        <TextComponent text="Selecione Uma Aula"/>
+                                    </div>
+                                </div>
+
+                            )
+                        }
+                    </div>
+                <div className="right-container">
+                    <div>
+                        <TeacherClassList classes={this.props.classes} clickedClass={this.clickedClass}/>
+                    </div>
+                </div>
+            
+            </div>
+        )
+
+    }
+}
+
+
+const mapStateToProps = (state, props) => ({
+    classes: selectClasses(state.classes, state.filters.textClass, state.teachers, state.students),
+    teacher: state.teachers.find((teacher) => teacher._id === props.match.params.id)
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    startFetchClassesByTeacherId: (id) => dispatch(startFetchClassesByTeacherId(id)),
+    startFetchTeachers: () => dispatch(startFetchTeachers()),
+    startFetchStudents: () => dispatch(startFetchStudents())
+});
+  
+export default connect(mapStateToProps, mapDispatchToProps)(TeacherClassesPage);

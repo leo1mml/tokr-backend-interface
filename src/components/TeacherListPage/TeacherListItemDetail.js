@@ -55,7 +55,9 @@ const TeacherListItemDetail = (props) => {
                     </p>
                 </div>
                 <div className="bottom-buttons-container">
-                    <button className="classes-btn">Aulas</button>
+                    <Link to={`/classesFromTeacher/${teacher._id}`}>
+                        <button className="classes-btn">Aulas</button>
+                    </Link>
                     <Link to={`/editTeacher/${teacher._id}`}>
                         <button className="edit-btn">Editar</button>
                     </Link>
