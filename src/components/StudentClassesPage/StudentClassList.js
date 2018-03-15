@@ -8,7 +8,7 @@ export default (props) => (
         <div className="user-list">
             {props.classes.map((lecture) => {
                 return (
-                    <div key={lecture._id + "div"} onClick={() => this.clickedClass(lecture)}>
+                    <div key={lecture._id + "div"} onClick={() => props.clickedClass(lecture)}>
                         <ClassStudentListItem key={lecture._id} {...lecture}/>
                     </div>
                 )

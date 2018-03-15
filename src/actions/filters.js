@@ -1,8 +1,9 @@
 // SET_TEXT_FILTER
-export const setTextFilter = (textStudent = '', textTeacher = '') => ({
+export const setTextFilter = (textStudent = '', textTeacher = '', textClass = '') => ({
     type: 'SET_TEXT_FILTER',
     textStudent,
-    textTeacher
+    textTeacher,
+    textClass
 });
 
 export const setStatusFilter = (studentStatus = '', teacherStatus = '') => {

@@ -7,6 +7,11 @@ export default (state = classesReducerDefaultState, action) => {
                 ...state,
                 action.class
             ]
+        case "SET_CLASSES":
+        {
+            return action.classes
+        }
+            
         default:
             return state;
     }

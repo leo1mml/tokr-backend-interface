@@ -3,6 +3,7 @@
 const filtersReducerDefaultState = {
     textStudent: '',
     textTeacher: '',
+    textClass: '',
     studentStatus: '',
     teacherStatus: ''
 };
@@ -13,7 +14,8 @@ export default (state = filtersReducerDefaultState, action) => {
           return {
             ...state,
               textStudent: action.textStudent,
-              textTeacher: action.textTeacher
+              textTeacher: action.textTeacher,
+              textClass: action.textClass
           };
         case 'SET_STATUS_FILTER':
           return {

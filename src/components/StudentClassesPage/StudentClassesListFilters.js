@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {setTextFilter} from '../../actions/filters'
 
 export class StudentClassesListFilters extends React.Component {
 
@@ -30,9 +31,11 @@ export class StudentClassesListFilters extends React.Component {
 };
 
 const mapStateToProps = (state) => ({
+  filters: state.filters
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  setTextFilter: (text) => dispatch(setTextFilter(undefined, undefined, text)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StudentClassesListFilters);

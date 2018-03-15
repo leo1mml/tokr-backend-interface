@@ -13,7 +13,7 @@ export default () => {
       classes: classesReducer,
       students: studentsReducer,
       teachers: teachersReducer,
-      filters: filtersReducer
+      filters: filtersReducer,
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

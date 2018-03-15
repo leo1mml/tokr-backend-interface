@@ -103,8 +103,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(StudentsList);
 const styles = {
     statusButtonsContainer: {
         position: 'absolute',
-        right: '150px',
-        top: '650px',
+        marginLeft: '700px',
+        marginTop: '70px',
         width: '402px',
         height: '70px',
         display: 'flex',

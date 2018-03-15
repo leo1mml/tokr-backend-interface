@@ -6,6 +6,11 @@ export const addClass = (classToAdd) => ({
     classToAdd
 });
 
+export const setClasses = (classes) => ({
+    type: "SET_CLASSES",
+    classes
+})
+
 export const startAddClass = (classToAdd) => {
     return (dispatch) => {
         axios({
@@ -27,3 +32,43 @@ export const startAddClass = (classToAdd) => {
         })
     }
 }
+
+export const startFetchClasses = () => {
+    return (dispatch) => {
+        axios({
+            url: 'https://tokr-server-api.herokuapp.com/classes',
+            method: 'get',
+            headers: {
+                'app-pass': '90a8hsdnfilehuqahnfhiuh4rierrhqfhqhqhqeph9dklnnvknjjafaiojia98hf3iujklaaoiophhpafuuq',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => {
+            dispatch(setClasses(response.data.tempClasses))
+        })
+        .catch((err) => {
+            console.log('passei com erro:', err);
+        })
+    }
+}
+
+export const startFetchClassesByStudentId = (id) => {
+    return (dispatch) => {
+        axios({
+            url: `https://tokr-server-api.herokuapp.com/classes/classesForStudent/${id}`,
+            method: 'get',
+            headers: {
+                'app-pass': '90a8hsdnfilehuqahnfhiuh4rierrhqfhqhqhqeph9dklnnvknjjafaiojia98hf3iujklaaoiophhpafuuq',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((response) => {
+            console.log(response.data);
+            dispatch(setClasses(response.data.classes))
+        })
+        .catch((err) => {
+            console.log('passei com erro aqui ó:', err);
+        })
+    }
+}
+

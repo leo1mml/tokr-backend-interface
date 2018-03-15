@@ -1,7 +1,6 @@
 // Get visible students
 
 export default (students,  text, status = '') => {
-  console.log('status:', status);
   return students.filter((student) => {
     const textMatch = student.name.toLowerCase().includes(text.toLowerCase()) ||
         student.cpf.toLowerCase().includes(text.toLowerCase()) ||
