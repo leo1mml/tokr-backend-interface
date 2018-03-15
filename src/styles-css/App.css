@@ -315,13 +315,20 @@ button:disabled {
   color: white;
   background-color: #8812BF;
   border-radius: 10px;
-  margin-top: 130px;
+  margin-top: 60px;
   font-size: 16px;
   font-weight: 900;
   font-style: italic; }
 
 .schedule-class-btn:hover {
   background-color: #6d0e9a; }
+
+.instrument-selector {
+  border: none;
+  background-color: white;
+  height: 40px;
+  width: 100px;
+  margin-top: 30px; }
 
 .page-container {
   height: 100%;
@@ -345,7 +352,7 @@ button:disabled {
   height: 100%;
   width: 45%; }
 
-.name-title {
+.name-title-classes {
   font-size: 20px;
   font-weight: 900;
   margin-top: 55px;
@@ -368,7 +375,9 @@ button:disabled {
   background-color: white;
   border-radius: 10px;
   padding: 10px;
-  margin-top: 20px; }
+  margin-top: 20px;
+  max-height: 180px;
+  overflow: scroll; }
 
 .App {
   text-align: center; }

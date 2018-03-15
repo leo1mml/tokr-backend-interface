@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setTextFilter } from '../../actions/filters';
 
 export class StudentClassesListFilters extends React.Component {
 

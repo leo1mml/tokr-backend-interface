@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import selectUsers from '../../selectors/users'
 import {startFetchStudents} from '../../actions/students'
 import {startFetchTeachers} from '../../actions/teachers'
-import {ProgressSpinner} from 'primereact/components/progressspinner/ProgressSpinner';
 import TeachersSearchBox from './TearchersSearchBox'
 import StudentsSearchBox from './StudentsSearchBox'
 import SmallTeacherListItem from './SmallTeacherListItem'
@@ -32,13 +31,6 @@ class ClassSchedulerPage extends React.Component {
     }
 
     render() {
-        if(!this.props.students || !this.props.teachers) {
-            return (
-                <div className="loading-spinner">
-                    <ProgressSpinner/>
-                </div>
-            )
-        }
         return (
             <div className="major-container">
                 <div className="sub-container">

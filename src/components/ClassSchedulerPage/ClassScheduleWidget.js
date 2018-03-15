@@ -2,11 +2,36 @@ import React from 'react'
 import SmallTeacherListItem from './SmallTeacherListItem'
 import SmallStudentListItem from './SmallStudentListItem'
 import {Calendar} from 'primereact/components/calendar/Calendar';
+import { connect } from 'react-redux';
+import {startAddClass} from '../../actions/classes'
 
 
 class ClassScheduleWidget extends React.Component {
     state = {
-        date: new Date()
+        date: new Date(),
+        instrument: 'guitarra'
+    }
+
+    prepareToAddClass = () => {
+        if(!this.props.student || !this.props.teacher || this.state.instrument === ''){
+            console.log('nao foi nao vei', this.state);
+            console.log(this.props.student);
+            console.log(this.props.teacher);
+            return
+        }
+
+        let lecture = {
+            date: this.state.date,
+            _studentId: this.props.student? this.props.student._id : '',
+            _teacherId: this.props.teacher? this.props.teacher._id : '',
+            instrument: this.state.instrument
+        }
+        this.props.startAddClass(lecture)
+    }
+
+    onInstrumentSelect = (e) => {
+        let instrument = e.target.value
+        this.setState(() => ({instrument}))
     }
 
     render () {
@@ -48,10 +73,29 @@ class ClassScheduleWidget extends React.Component {
                         locale={br}
                     ></Calendar>
                 </div>
-                <button className="schedule-class-btn">Agendar</button>
+                <div>
+                    <select className="instrument-selector" name="instrumentSelector" id="instrument" onChange={this.onInstrumentSelect}>
+                        <option value="guitarra">Guitarra</option>
+                        <option value="violao">Violão</option>
+                        <option value="ukulele">Ukulele</option>
+                        <option value="teclado">Teclado</option>
+                        <option value="baixo">Baixo</option>
+                    </select>
+                </div>
+                <button className="schedule-class-btn" onClick={this.prepareToAddClass}>Agendar</button>
             </div>
         )
     }
 }
 
-export default ClassScheduleWidget
+const mapStateToProps = (state, props) => {
+    return {
+        
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    startAddClass: (lecture) => dispatch(startAddClass(lecture))
+});
+  
+export default connect(mapStateToProps, mapDispatchToProps)(ClassScheduleWidget);
