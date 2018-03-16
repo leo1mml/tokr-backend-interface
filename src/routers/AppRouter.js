@@ -5,6 +5,7 @@ import TeachersList from '../components/TeacherListPage/TeacherList'
 import ClassSchedulerPage from '../components/ClassSchedulerPage/ClassSchedulerPage'
 import EditTeacherPage from '../components/EditTeacherPage/EditTeacherPage'
 import EditStudentPage from '../components/EditStudentPage/EditStudentPage'
+import LoginPage from '../components/LoginPage/LoginPage'
 import StudentClassesPage from '../components/StudentClassesPage/StudentClassesPage'
 import TeacherClassesPage from '../components/TeacherClassesPage/TeacherClassesPage'
 import { push as Menu } from 'react-burger-menu'
@@ -15,23 +16,34 @@ import {NotificationContainer} from 'react-notifications';
 
 export default () => (
     <BrowserRouter>
-      <div id="outer-container">
-        <Header/>
-          <Menu width={230} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }>
-            <MenuItems/>
-          </Menu>
-          <div id="page-wrap">
-            <Switch>
-              <Route path="/" component={ClassSchedulerPage} exact={true}/>
-              <Route path="/studentsList" component={StudentsList} exact={true}/>
-              <Route path="/teachersList" component={TeachersList} exact={true}/>
-              <Route path="/editTeacher/:id" component={EditTeacherPage}/>
-              <Route path="/editStudent/:id" component={EditStudentPage}/>
-              <Route path="/classesFromStudent/:id" component={StudentClassesPage} exact={true}/>
-              <Route path="/classesFromTeacher/:id" component={TeacherClassesPage} exact={true}/>
-            </Switch>
-          </div>
-          <NotificationContainer/>
+
+      <div>
+        { 
+            localStorage.masterPass ? 
+          (
+            <div id="outer-container">
+              <Header/>
+                <Menu width={230} pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }> 
+                  <MenuItems/>
+                </Menu>
+                <div id="page-wrap">
+                  <Switch>
+                    <Route path="/" component={ClassSchedulerPage} exact={true}/>
+                    <Route path="/studentsList" component={StudentsList} exact={true}/>
+                    <Route path="/teachersList" component={TeachersList} exact={true}/>
+                    <Route path="/editTeacher/:id" component={EditTeacherPage}/>
+                    <Route path="/editStudent/:id" component={EditStudentPage}/>
+                    <Route path="/classesFromStudent/:id" component={StudentClassesPage} exact={true}/>
+                    <Route path="/classesFromTeacher/:id" component={TeacherClassesPage} exact={true}/>
+                  </Switch>
+                </div>
+                <NotificationContainer/>
+            </div>
+          ):
+          (
+            <LoginPage/>
+          )
+        }
       </div>
     </BrowserRouter>
 )
