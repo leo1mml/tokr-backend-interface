@@ -8,6 +8,8 @@ import selectClasses from '../../selectors/classes'
 import {startFetchClassesByTeacherId}  from '../../actions/classes'
 import {startFetchStudents} from '../../actions/students'
 import {startFetchTeachers} from '../../actions/teachers'
+import ClassTeacherListItem from './ClassTeacherListItem'
+import TeacherClassesListFilters from './TeacherClassesListFilters'
 
 class TeacherClassesPage extends React.Component {
 
@@ -25,6 +27,15 @@ class TeacherClassesPage extends React.Component {
 
     clickedClass = (selectedClass) => {
         this.setState(() => ({selectedClass}))
+    }
+
+    getStudentNameForClass = (lecture) => {
+
+        const student = this.props.students.find((student) => lecture._studentId === student._id)
+        if(student){
+            return student.name
+        }
+        return ''
     }
 
     render () {
@@ -99,10 +110,20 @@ class TeacherClassesPage extends React.Component {
                     </div>
                 <div className="right-container">
                     <div>
-                        <TeacherClassList classes={this.props.classes} clickedClass={this.clickedClass}/>
+                        <div className="user-list-container">
+                            <TeacherClassesListFilters/>
+                            <div className="user-list">
+                                {this.props.classes.map((lecture) => {
+                                    return (
+                                        <div key={lecture._id + "div"} onClick={() => this.clickedClass(lecture)}>
+                                            <ClassTeacherListItem key={lecture._id} {...lecture} studentName={this.getStudentNameForClass(lecture)}/>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            
             </div>
         )
 
@@ -112,7 +133,8 @@ class TeacherClassesPage extends React.Component {
 
 const mapStateToProps = (state, props) => ({
     classes: selectClasses(state.classes, state.filters.textClass, state.teachers, state.students),
-    teacher: state.teachers.find((teacher) => teacher._id === props.match.params.id)
+    teacher: state.teachers.find((teacher) => teacher._id === props.match.params.id),
+    students: state.students
 })
 
 const mapDispatchToProps = (dispatch) => ({
