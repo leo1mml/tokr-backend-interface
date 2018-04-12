@@ -24,8 +24,9 @@ export const startAddClass = (classToAdd) => {
         })
         .then((response) => {
             const tempClass = response.data.tempClass
-            NotificationManager.success('Aula Agendada!', 'Pronto!')
+            // NotificationManager.success('Aula Agendada!', 'Pronto!')
             dispatch(addClass(tempClass))
+            window.location.reload()
         })
         .catch((err) => {
             console.log('passei com erro:', err);
