@@ -52,6 +52,7 @@ class TeacherClassesPage extends React.Component {
                         
                     </div>
                     <div>
+                        <h3>Feedback do professor</h3>
                         {
                             this.state.selectedClass ? 
                             (
@@ -80,6 +81,7 @@ class TeacherClassesPage extends React.Component {
                             )
                         }
                     </div>
+                    <h3>Feedback do aluno</h3>
                         {
                             this.state.selectedClass ? 
                             (
