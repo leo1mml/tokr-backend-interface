@@ -14,7 +14,7 @@ import ClassStudentListItem from './ClassStudentListItem'
 class StudentClassesPage extends React.Component {
 
     state = {
-        selectedClass: undefined
+        selectedClass: this.props.classes ? this.props.classes[0] : undefined
     }
 
     componentDidMount(nextProps) {
@@ -119,7 +119,12 @@ class StudentClassesPage extends React.Component {
                                 {this.props.classes.map((lecture) => {
                                     return (
                                         <div key={lecture._id + "div"} onClick={() => this.clickedClass(lecture)}>
-                                            <ClassStudentListItem key={lecture._id} {...lecture} teacherName={this.getTeacherNameForClass(lecture)}/>
+                                            <ClassStudentListItem 
+                                                key={lecture._id} 
+                                                {...lecture} 
+                                                teacherName={this.getTeacherNameForClass(lecture)}
+                                                isSelected={this.state.selectedClass ? (this.state.selectedClass._id === lecture._id) : false}
+                                            />
                                         </div>
                                     )
                                 })}

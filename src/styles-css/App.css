@@ -111,6 +111,9 @@ button:disabled {
   position: relative;
   display: inline; }
 
+.darkened {
+  background-color: #ebebeb; }
+
 .list-item {
   border-bottom: 1px #979797 solid;
   font-weight: lighter;

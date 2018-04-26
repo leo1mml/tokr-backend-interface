@@ -53,6 +53,10 @@
     display: inline;
 }
 
+.darkened {
+    background-color: darken(white, 8)
+}
+
 .list-item {
     border-bottom: 1px #979797 solid;
     font-weight: lighter;

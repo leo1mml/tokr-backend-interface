@@ -14,7 +14,7 @@ import TeacherClassesListFilters from './TeacherClassesListFilters'
 class TeacherClassesPage extends React.Component {
 
     state = {
-        selectedClass: undefined
+        selectedClass: this.props.classes ? this.props.classes[0] : undefined
     }
 
     componentDidMount(nextProps) {
@@ -115,10 +115,15 @@ class TeacherClassesPage extends React.Component {
                         <div className="user-list-container">
                             <TeacherClassesListFilters/>
                             <div className="user-list">
-                                {this.props.classes.map((lecture) => {
+                                {this.props.classes.map((lecture, index) => {
                                     return (
                                         <div key={lecture._id + "div"} onClick={() => this.clickedClass(lecture)}>
-                                            <ClassTeacherListItem key={lecture._id} {...lecture} studentName={this.getStudentNameForClass(lecture)}/>
+                                            <ClassTeacherListItem 
+                                                key={lecture._id} 
+                                                {...lecture} 
+                                                studentName={this.getStudentNameForClass(lecture)}
+                                                isSelected={this.state.selectedClass ? (this.state.selectedClass._id === lecture._id) : false}
+                                                />
                                         </div>
                                     )
                                 })}
