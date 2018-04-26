@@ -1,6 +1,7 @@
 
 
 export const createDateFromStringBR = (string) => {
+    console.log(string);
     if(!string){
         return
     }
