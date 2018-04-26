@@ -24,9 +24,8 @@ export const startAddClass = (classToAdd) => {
         })
         .then((response) => {
             const tempClass = response.data.tempClass
-            // NotificationManager.success('Aula Agendada!', 'Pronto!')
+            NotificationManager.success('Aula Agendada!', 'Pronto!')
             dispatch(addClass(tempClass))
-            window.location.reload()
         })
         .catch((err) => {
             console.log('passei com erro:', err);
@@ -35,6 +34,7 @@ export const startAddClass = (classToAdd) => {
 }
 
 export const startFetchClasses = () => {
+    console.log("passei aqui rapaaa");
     return (dispatch) => {
         axios({
             url: 'https://tokr-server-api.herokuapp.com/classes',

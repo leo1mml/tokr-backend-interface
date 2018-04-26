@@ -1,7 +1,7 @@
 import {createStringFromDateBR} from './../helpers/DateHelper'
 
 export default (classes,  text, teachers=[], students=[]) => {
-    return classes.filter((lecture) => {
+    return classes.filter((lecture = {_teacherId: 'undefined', _studentId: 'undefined'}) => {
       let hasTeacherName = true
       const teacherForClass = teachers.find((teacher) => lecture._teacherId === teacher._id)
       if(teacherForClass){

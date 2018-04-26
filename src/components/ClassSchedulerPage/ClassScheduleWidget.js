@@ -3,7 +3,7 @@ import SmallTeacherListItem from './SmallTeacherListItem'
 import SmallStudentListItem from './SmallStudentListItem'
 import {Calendar} from 'primereact/components/calendar/Calendar';
 import { connect } from 'react-redux';
-import {startAddClass} from '../../actions/classes'
+import {startAddClass, startFetchClasses} from '../../actions/classes'
 
 
 class ClassScheduleWidget extends React.Component {
@@ -27,6 +27,7 @@ class ClassScheduleWidget extends React.Component {
             instrument: this.state.instrument
         }
         this.props.startAddClass(lecture)
+        this.props.startFetchClasses()
     }
 
     onInstrumentSelect = (e) => {
@@ -95,7 +96,8 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    startAddClass: (lecture) => dispatch(startAddClass(lecture))
+    startAddClass: (lecture) => dispatch(startAddClass(lecture)),
+    startFetchClasses: () => dispatch(startFetchClasses())
 });
   
 export default connect(mapStateToProps, mapDispatchToProps)(ClassScheduleWidget);
