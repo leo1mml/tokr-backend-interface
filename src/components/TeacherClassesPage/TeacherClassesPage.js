@@ -109,6 +109,26 @@ class TeacherClassesPage extends React.Component {
 
                             )
                         }
+                        <h3>Descrição da aula</h3>
+                    {
+                        this.state.selectedClass ? 
+                        (
+                            <div>
+                                <div>
+                                    <TextComponent text={this.state.selectedClass.description}/>
+                                </div>
+                            </div>
+                        )
+                                :
+                        (
+                            <div>
+                                <div>
+                                    <TextComponent text="Selecione Uma Aula"/>
+                                </div>
+                            </div>
+
+                        )
+                    }
                     </div>
                 <div className="right-container">
                     <div>

@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux';
 import PhotoName from './PhotoName';
 import TextComponent from './TextComponent'
-import StudentClassList from './StudentClassList'
 import {Rating} from 'primereact/components/rating/Rating';
 import selectClasses from '../../selectors/classes'
 import {startFetchClassesByStudentId}  from '../../actions/classes'
@@ -82,35 +81,56 @@ class StudentClassesPage extends React.Component {
                             )
                         }
                     </div>
-                        <h3>Feedback do professor</h3>
-                        {
-                            this.state.selectedClass ? 
-                            (
-                                <div>
-                                    <div className="rating-container">
-                                        <Rating value={this.state.selectedClass.studentGrade} cancel={false}/>
-                                        <p className="grade">{this.state.selectedClass.studentGrade}</p>
-                                    </div>
-                                    <div>
-                                        <TextComponent text={this.state.selectedClass.teacherNote}/>
-                                    </div>
+                    <h3>Feedback do professor</h3>
+                    {
+                        this.state.selectedClass ? 
+                        (
+                            <div>
+                                <div className="rating-container">
+                                    <Rating value={this.state.selectedClass.studentGrade} cancel={false}/>
+                                    <p className="grade">{this.state.selectedClass.studentGrade}</p>
                                 </div>
-                            )
-                                 :
-                            (
                                 <div>
-                                    <div className="rating-container">
-                                        <Rating value={0} cancel={false}/>
-                                        <p className="grade">?</p>
-                                    </div>
-                                    <div>
-                                        <TextComponent text="Selecione Uma Aula"/>
-                                    </div>
+                                    <TextComponent text={this.state.selectedClass.teacherNote}/>
                                 </div>
+                            </div>
+                        )
+                                :
+                        (
+                            <div>
+                                <div className="rating-container">
+                                    <Rating value={0} cancel={false}/>
+                                    <p className="grade">?</p>
+                                </div>
+                                <div>
+                                    <TextComponent text="Selecione Uma Aula"/>
+                                </div>
+                            </div>
 
-                            )
-                        }
-                    </div>
+                        )
+                    }
+                    <h3>Descrição da aula</h3>
+                    {
+                        this.state.selectedClass ? 
+                        (
+                            <div>
+                                <div>
+                                    <TextComponent text={this.state.selectedClass.description}/>
+                                </div>
+                            </div>
+                        )
+                                :
+                        (
+                            <div>
+                                <div>
+                                    <TextComponent text="Selecione Uma Aula"/>
+                                </div>
+                            </div>
+
+                        )
+                    }
+                </div>
+                    
                 <div className="right-container">
                     <div>
                         <div className="user-list-container">
