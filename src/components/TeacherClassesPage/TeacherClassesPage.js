@@ -121,7 +121,7 @@ class TeacherClassesPage extends React.Component {
                         )
                                 :
                         (
-                            <div>
+                            <div> 
                                 <div>
                                     <TextComponent text="Selecione Uma Aula"/>
                                 </div>
